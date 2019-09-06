@@ -15,7 +15,8 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 // Register all scripts and styles.
 function rwm_audioplayer_styles_scripts() {
 	wp_register_style('rwm-audioplayer-styles', 'https://realwealthmediahttpspullzone-realwealthradiol.netdna-ssl.com/embeds/podcastplayer/v1/app.css');
-	wp_register_script('rwm-audioplayer-js', 'https://realwealthmediahttpspullzone-realwealthradiol.netdna-ssl.com/embeds/podcastplayer/v1/app.js', '', '', true );
+  wp_register_script('rwm-audioplayer-js', 'https://realwealthmediahttpspullzone-realwealthradiol.netdna-ssl.com/embeds/podcastplayer/v1/app.js', '', '', true );
+  wp_register_script('rwm-detect-ie-js', 'https://realwealthmediahttpspullzone-realwealthradiol.netdna-ssl.com/embeds/podcastplayer/v1/detect-ie.js', '', '', true );
 }
 add_action('wp_loaded', 'rwm_audioplayer_styles_scripts' );
 
@@ -34,7 +35,8 @@ function rwm_audioplayer_shortcode_func( $atts ) {
     return 'You need to add your slug to render the audioplayer. Please see <a href="https://realwealthmarketing.com/podcast-player/" target="_blank">https://realwealthmarketing.com/podcast-player</a> for instructions.';
   }
 	wp_enqueue_style('rwm-audioplayer-styles');
-	wp_enqueue_script('rwm-audioplayer-js');
+  wp_enqueue_script('rwm-audioplayer-js');
+  wp_enqueue_script('rwm-detect-ie-js');
 	$booleanOptions = '';
   $booleanOptions .= !empty($atts['autoplay']) ? 'data-autoplay ' : '';
   $booleanOptions .= !empty($atts['playlist']) ? 'data-playlist ' : '';
